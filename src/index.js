@@ -273,11 +273,16 @@ class ReactPhoneInput extends React.Component {
   // Hooks for updated props
   updateDefaultCountry = (country) => {
     const newSelectedCountry = find(this.state.onlyCountries, {iso2: country});
-    this.setState({
-      defaultCountry: country,
-      selectedCountry: newSelectedCountry,
-      formattedNumber: this.props.disableCountryCode ? '' : '+' + newSelectedCountry.dialCode
-    });
+    if(newSelectedCountry) {
+      this.setState({
+        defaultCountry: country,
+        selectedCountry: newSelectedCountry,
+        formattedNumber: this.props.disableCountryCode ? '' : '+' + newSelectedCountry.dialCode
+      });
+
+      return
+    }
+    return null
   }
 
   updateFormattedNumber(number) {
