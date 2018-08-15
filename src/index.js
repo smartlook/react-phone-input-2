@@ -277,7 +277,7 @@ class ReactPhoneInput extends React.Component {
       this.setState({
         defaultCountry: country,
         selectedCountry: newSelectedCountry,
-        formattedNumber: this.props.disableCountryCode ? '' : '+' + newSelectedCountry.dialCode
+        formattedNumber: this.props.disableCountryCode ? '' : `+${newSelectedCountry.dialCode}`
       });
 
       return
